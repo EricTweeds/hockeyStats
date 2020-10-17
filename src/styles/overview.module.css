@@ -1,0 +1,67 @@
+.container {
+    height: 37rem;
+    display: flex;
+    border: 1px solid #000;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3rem;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.header {
+    width: 100%;
+    height: 1em;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #34515F;
+    color: white;
+}
+
+.closeButton {
+    color: #aaa;
+}
+
+.closeButton:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.card {
+    margin: 1rem;
+}
+
+.wrapper {
+    height: 36rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.controller {
+    height: 5rem;
+    width: 100%;
+    border-bottom: 1px solid #000;
+}
+
+.data {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 31rem;
+}
+
+.table {
+    width: 75%;
+    height: 100%;
+    border-right: 1px solid #000;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
