@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import { withGoogleSheets } from 'react-db-google-sheets';
 
-import { FaAngleUp, FaAngleDown } from "react-icons/fa";
+import { FaAngleUp, FaAngleDown, FaCircle } from "react-icons/fa";
 
 import styles from "../styles/overview.module.css";
 import HockeyCard from './hockeyCard';
@@ -59,9 +59,9 @@ class Overview extends Component {
         let headers = ["Player", "Position", "Number", "GP", "G", "A", "Pts", "PIM"];
         return (
             <div className={styles.wrapper}>
-                <div className={styles.controller}>
+                {/* <div className={styles.controller}>
 
-                </div>
+                </div> */}
                 <div className={styles.data}>
                     <div className={styles.tableWrapper}>
                     <table className={styles.table}>
@@ -91,6 +91,13 @@ class Overview extends Component {
                                     <tr className={styles.row} key={`player-${player.Player}`} onClick={this.cardSelected.bind(this, player)}>
                                         {headers.map(col => {
                                             let value = player[col];
+                                            if (col === "Player" && player.Player === selected.Player) {
+                                                return (
+                                                    <td className={styles.column} key={`player-${player.Player}-${col}`}>
+                                                        <FaCircle className={styles.selectedDot} /> {value}
+                                                    </td>
+                                                );
+                                            }
                                             return (
                                                 <td className={styles.column} key={`player-${player.Player}-${col}`}>
                                                     {value}

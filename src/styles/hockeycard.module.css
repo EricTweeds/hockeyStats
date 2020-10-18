@@ -67,7 +67,7 @@
     height: 10rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 0.5rem;
     background-color: #fff;
@@ -247,4 +247,23 @@
 .mint.active {
     background-color: green;
     color: white;
+}
+
+.statRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.statBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statName {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }

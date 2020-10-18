@@ -30,11 +30,11 @@
 }
 
 .wrapper {
-    height: 36rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    width: fit-content;
 }
 
 .controller {
@@ -46,15 +46,11 @@
 .data {
     display: flex;
     justify-content: flex-start;
-    width: 100%;
-    height: 31rem;
     
 }
 
 .tableWrapper {
-    width: 75%;
     border-right: 1px solid #000;
-    height: 31rem;
     overflow-y: scroll;
 }
 
@@ -75,7 +71,6 @@ thead tr th {
     min-width: 17rem;
     position: sticky;
     top: 0;
-    width: 23%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,11 +82,16 @@ thead tr th {
 
 .row {
     border-bottom: 1px solid #ddd;
+    height: 2rem;
 }
 
 .row:hover {
     background-color: #eee;
     cursor: pointer;
+}
+
+.row.selectedRow {
+    background-color: #eee;
 }
 
 .headerRow {
@@ -129,4 +129,8 @@ table {
 
 .sortIcon.selected {
     background-color: #ddd;
+}
+
+.selectedDot {
+    font-size: 0.5em;
 }

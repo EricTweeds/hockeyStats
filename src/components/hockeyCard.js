@@ -13,7 +13,31 @@ export default class HockeyCard extends Component {
                     <div className={classnames(styles.name)}>{Player}</div>
                 </div>
                 <div className={classnames(styles.middleRow)}>
+                    <div className={styles.statRow}>
+                        <div className={styles.statBox}>
+                            <span className={styles.statName}>G</span>
+                            <span className={styles.statValue}>{G}</span>
+                        </div>
+                        <div className={styles.statBox}>
+                            <span className={styles.statName}>A</span>
+                            <span className={styles.statValue}>{A}</span>
+                        </div>
+                        <div className={styles.statBox}>
+                            <span className={styles.statName}>Pts</span>
+                            <span className={styles.statValue}>{Pts}</span>
+                        </div>
+                    </div>
+                    <div className={styles.statRow}>
+                        <div className={styles.statBox}>
+                            <span className={styles.statName}>GP</span>
+                            <span className={styles.statValue}>{GP}</span>
+                        </div>
 
+                        <div className={styles.statBox}>
+                            <span className={styles.statName}>PIM</span>
+                            <span className={styles.statValue}>{PIM}</span>
+                        </div>
+                    </div>
                 </div>
                 <div className={classnames(styles.bottomRow)}>
                     <div className={classnames(styles.teamName)}>CYO Ducks</div>
