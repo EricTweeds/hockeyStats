@@ -3,32 +3,21 @@ import classnames from 'classnames';
 
 import styles from '../styles/hockeycard.module.css';
 
-const positionMap = {
-    "Right Wing": "RW",
-    "Left Wing": "LW",
-    "Center": "C",
-    "Defence": "D",
-    "Goalie": "G",
-    "Referee": "R",
-    "Coach": "Co"
-}
-
 export default class HockeyCard extends Component {
     render() {
-        const { firstName, lastName, position, team,  number, isSmall, teams } = this.props;
-        let size = isSmall ? styles.small : null;
+        const { Player, Number, Position, GP, G, A, Pts, PIM } = this.props;
         return (
-            <div style={{backgroundColor: `${teams[team] ? teams[team].Color : "fff"}`}} className={classnames(styles.container, size)}>
-                <div className={classnames(styles.topRow, size)}>
-                    <div className={classnames(styles.position, size)}>{positionMap[position]}</div>
-                    <div className={classnames(styles.name, size)}>{firstName + " " + lastName}</div>
+            <div className={classnames(styles.container)}>
+                <div className={classnames(styles.topRow)}>
+                    <div className={classnames(styles.position)}>{Position}</div>
+                    <div className={classnames(styles.name)}>{Player}</div>
                 </div>
-                <div className={classnames(styles.middleRow, size)}>
+                <div className={classnames(styles.middleRow)}>
 
                 </div>
-                <div className={classnames(styles.bottomRow, size)}>
-                    <div className={classnames(styles.teamName, size)}>{team}</div>
-                    <div className={classnames(styles.number, size)}>#{number}</div>
+                <div className={classnames(styles.bottomRow)}>
+                    <div className={classnames(styles.teamName)}>CYO Ducks</div>
+                    <div className={classnames(styles.number)}>#{Number}</div>
                 </div>
             </div>
         )

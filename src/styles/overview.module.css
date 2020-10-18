@@ -29,10 +29,6 @@
     cursor: pointer;
 }
 
-.card {
-    margin: 1rem;
-}
-
 .wrapper {
     height: 36rem;
     display: flex;
@@ -52,16 +48,85 @@
     justify-content: flex-start;
     width: 100%;
     height: 31rem;
+    
+}
+
+.tableWrapper {
+    width: 75%;
+    border-right: 1px solid #000;
+    height: 31rem;
+    overflow-y: scroll;
 }
 
 .table {
-    width: 75%;
-    height: 100%;
-    border-right: 1px solid #000;
+    display: block;
+    border-collapse: collapse;
+    margin: 0rem;
+    width: 100%;
+}
+
+thead tr th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
 }
 
 .card {
+    min-width: 17rem;
+    position: sticky;
+    top: 0;
+    width: 23%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.selectedRow {
+    background-color: #eee;
+}
+
+.row {
+    border-bottom: 1px solid #ddd;
+}
+
+.row:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.headerRow {
+    border-bottom: 1px solid #000;
+}
+
+.rowHeader {
+    text-align: left;
+    padding: 0.5rem;
+}
+
+.column {
+    padding: 0 0.5rem;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.sort {
+    display: inline-table;
+    margin-left: 0.5rem;
+}
+
+.sortIcon {
+    display: block;
+}
+
+.sortIcon:hover {
+    display: block;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.sortIcon.selected {
+    background-color: #ddd;
 }

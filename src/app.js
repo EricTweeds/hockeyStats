@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import GoogleSheetsProvider from 'react-db-google-sheets';
+
 import Overview from "./components/Overview";
 
 import styles from "./styles/app.module.css";
@@ -11,7 +13,7 @@ export default class App extends Component {
 
     render() {
         return(
-            <div>
+            <GoogleSheetsProvider>
                 <div className={styles.header}>
                     <span className={styles.headerNavName}>HOCKEY STATS</span>
                 </div>
@@ -24,7 +26,7 @@ export default class App extends Component {
                         <Overview />
                     </div>
                 </div>
-            </div>
+            </GoogleSheetsProvider>
         );
     }
 }
