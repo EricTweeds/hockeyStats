@@ -1,10 +1,11 @@
 .container {
     width: 15rem;
     height: 21rem;
-    border: 3px solid black;
+    border: 3px solid #000;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    background-color: #472243;
 }
 
 .container.small {
@@ -30,12 +31,12 @@
 .position {
     width: 2rem;
     height: 2rem;
-    border: 1px solid black;
+    border: 1px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 1rem;
-    background-color: white;
+    background-color: #006a65;
 }
 
 .position.small {
@@ -48,11 +49,11 @@
 .name {
     width: 10rem;
     height: 2rem;
-    border: 1px solid black;
+    border: 1px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #006a65;
 }
 
 .name.small {
@@ -62,7 +63,7 @@
 }
 
 .middleRow {
-    border: 1px solid black;
+    border: 1px solid #000;
     margin: 1rem;
     height: 10rem;
     display: flex;
@@ -70,7 +71,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 0.5rem;
-    background-color: #fff;
+    background-color: #006a65;
 }
 
 .middleRow.small {
@@ -107,7 +108,7 @@
     display: flex;
     flex-direction: row;
     background-color: white;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #000;
 }
 
 .detailsTitle {
@@ -135,14 +136,14 @@
     height: 4rem;
     width: 11rem;
     padding-right: 2rem;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
     bottom: 0;
     z-index: 0;
-    background-color: white;
+    background-color: #006a65;
 }
 
 .teamName.small {
@@ -155,7 +156,7 @@
     position: absolute;
     width: 4rem;
     height: 4rem;
-    border: 1px solid black;
+    border: 1px solid #000;
     border-radius: 2rem;
     display: flex;
     justify-content: center;
@@ -163,7 +164,7 @@
     z-index: 1;
     bottom: 0;
     right: 0;
-    background-color: white;
+    background-color: #006a65;
     font-size: 20px;
 }
 
@@ -202,51 +203,6 @@
 
 .details.small {
     margin-bottom: 0.5rem;
-}
-
-.condition {
-    width: 12rem;
-    height: 1rem;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
-}
-
-.poor {
-    display: flex;
-    justify-content: center;
-    width: 3rem;
-}
-.poor.active {
-    background-color: red;
-    color: white;
-}
-.okay {
-    display: flex;
-    justify-content: center;
-    width: 3rem;
-}
-.okay.active {
-    background-color: orange;
-    color: white;
-}
-.good {
-    display: flex;
-    justify-content: center;
-    width: 3rem;
-}
-.good.active {
-    background-color: yellowgreen;
-    color: white;
-}
-.mint {
-    display: flex;
-    justify-content: center;
-    width: 3rem;
-}
-.mint.active {
-    background-color: green;
-    color: white;
 }
 
 .statRow {
