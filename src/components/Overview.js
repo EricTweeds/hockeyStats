@@ -13,7 +13,7 @@ class Overview extends Component {
         super(props);
         this.state = {
             sort: {
-                col: "G",
+                col: "Pts",
                 direction: "up"
             }
         };
@@ -21,7 +21,11 @@ class Overview extends Component {
 
     componentDidMount() {
         if (this.props.db.Players && this.props.db.Players.length) {
-            this.setState({selected: this.props.db.Players[0], players: this.props.db.Players.slice(0)}); 
+            let players = this.props.db.Players.slice(0).sort((a, b) => {
+                if (a["Pts"] < b ["Pts"]) return 1;
+                return -1;
+            });
+            this.setState({selected: players[0], players: players});
         }
     }
 
@@ -41,7 +45,7 @@ class Overview extends Component {
 
     handleSort(col, direction) {
         if (col === this.state.sort.col && direction === this.state.sort.direction) {
-            this.setState({sort: { direction: "up", col: "G" }, players: this.props.db.Players.slice(0), selected: this.props.db.Players[0]});
+            this.setState({sort: { direction: "up", col: "Pts" }, players: this.props.db.Players.slice(0), selected: this.props.db.Players[0]});
             return;
         }
         let players = this.state.players.sort((a, b) => {
