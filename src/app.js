@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import GoogleSheetsProvider from 'react-db-google-sheets';
 
 import Overview from "./components/Overview";
+import GameStats from "./components/GameStats";
 
 import styles from "./styles/app.module.css";
 
@@ -19,6 +20,7 @@ export default class App extends Component {
                 </div>
                 <div className={styles.games}>
                     <h1>Games</h1>
+                    <GameStats />
                 </div>
                 <div className={styles.playerStats}>
                     <h1>Player Stats</h1>

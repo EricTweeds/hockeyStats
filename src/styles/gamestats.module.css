@@ -1,0 +1,74 @@
+.results {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: 1px solid #ddd;
+    width: fit-content;
+}
+
+.resultBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.resultName {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.resultValue {
+
+}
+
+.games {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.gameBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border: 1px solid #ddd;
+    margin: 2rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.Win-text {
+    color: green;
+}
+
+.Loss-text {
+    color: red;
+}
+
+.teamName {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.team {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem;
+}
+
+.gameResult {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.gameDate {
+    color: #aaa;
+}

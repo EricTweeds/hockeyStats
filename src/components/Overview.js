@@ -23,6 +23,7 @@ class Overview extends Component {
         if (this.props.db.Players && this.props.db.Players.length) {
             let players = this.props.db.Players.slice(0).sort((a, b) => {
                 if (a["Pts"] < b ["Pts"]) return 1;
+                if (a["Pts"] === b ["Pts"]) return b["G"] - a["G"];
                 return -1;
             });
             this.setState({selected: players[0], players: players});
@@ -50,6 +51,7 @@ class Overview extends Component {
         }
         let players = this.state.players.sort((a, b) => {
             if (a[col] < b [col]) return direction === "up" ? 1 : -1;
+            if (a[col] === b[col]) return direction === "up" ? b["G"] - a["G"] : a["G"] - b["G"];
             return direction === "up" ? -1 : 1;
         });
         this.setState({selected: players[0], players, sort: {direction: direction, col: col}});
