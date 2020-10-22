@@ -21,10 +21,16 @@
 .playerStats {
     margin-left: 10rem;
     margin-right: 10rem;
+    margin-bottom: 10rem;
 }
 
 .playerStatsTable {
     border: 1px solid #000;
+    width: fit-content;
+    margin: auto;
+}
+
+.gameStats {
     width: fit-content;
     margin: auto;
 }

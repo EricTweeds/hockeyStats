@@ -20,7 +20,9 @@ export default class App extends Component {
                 </div>
                 <div className={styles.games}>
                     <h1>Games</h1>
-                    <GameStats />
+                    <div className={styles.gameStats}>
+                        <GameStats />
+                    </div>
                 </div>
                 <div className={styles.playerStats}>
                     <h1>Player Stats</h1>

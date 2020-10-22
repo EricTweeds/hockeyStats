@@ -9,6 +9,9 @@ import styles from "../styles/gamestats.module.css";
 class GameStats extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            showMore: false
+        }
     }
 
     calculateTotals(games) {
@@ -19,16 +22,38 @@ class GameStats extends Component {
             Ties: 0,
             Pts: 0,
             GF: 0,
-            GA: 0
+            GA: 0,
+            Strk: ""
         };
+
+        let oppScore = parseInt(games[0]["Opponent Score"]);
+        let yourScore = parseInt(games[0]["Team Score"]);
+        let curStreak = oppScore > yourScore ? "L" : oppScore < yourScore ? "W" : "T";
+        let streakCounter = 0;
+        let streakEnded = false;
         games.forEach(game => {
             ret.GP += 1;
             if (parseInt(game["Opponent Score"]) > parseInt(game["Team Score"])) {
+                if (curStreak === "L" && !streakEnded) {
+                    streakCounter ++;
+                } else {
+                    streakEnded = true;
+                }
                 ret.Loses += 1;
             } else if (parseInt(game["Opponent Score"]) < parseInt(game["Team Score"])) {
+                if (curStreak === "W" && !streakEnded) {
+                    streakCounter ++;
+                } else {
+                    streakEnded = true;
+                }
                 ret.Wins += 1;
                 ret.Pts += 2;
             } else if (parseInt(game["Opponent Score"]) === parseInt(game["Team Score"])) {
+                if (curStreak === "T" && !streakEnded) {
+                    streakCounter ++;
+                } else {
+                    streakEnded = true;
+                }
                 ret.Ties += 1;
                 ret.Pts += 1;
             }
@@ -36,11 +61,13 @@ class GameStats extends Component {
             ret.GA += parseInt(game["Opponent Score"]);
         });
 
+        ret.Strk = `${curStreak}-${streakCounter}`;
+
         return ret;
     }
 
     render() {
-        let games = this.props.db.Games;
+        let games = this.props.db.Games.slice(0).reverse();
         let results = this.calculateTotals(games);
         return (
             <div className={styles.gameStats}>
@@ -55,7 +82,10 @@ class GameStats extends Component {
                     })}
                 </div>
                 <div className={styles.games}>
-                    {games.map(game => {
+                    {games.map((game, i) => {
+                        if (i > 9 && !this.state.showMore) {
+                            return;
+                        }
                         let oppScore = parseInt(game["Opponent Score"]);
                         let yourScore = parseInt(game["Team Score"]);
                         let result = oppScore > yourScore ? "Loss" : oppScore < yourScore ? "Win" : "Tie";
@@ -77,6 +107,7 @@ class GameStats extends Component {
                         );
                     })}
                 </div>
+                {games.length > 9 ? <div className={styles.showMoreButton} onClick={() => this.setState({showMore: !this.state.showMore})}>{this.state.showMore ? "Show Less" : "Show More"}</div> : null}
             </div>
         );
     }
