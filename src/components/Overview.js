@@ -50,7 +50,11 @@ class Overview extends Component {
             return;
         }
         let players = this.state.players.sort((a, b) => {
-            if (a[col] < b [col]) return direction === "up" ? 1 : -1;
+            if (col !== 'Player' && col !== 'Position') {
+                a[col] = parseInt(a[col]);
+                b[col] = parseInt(b[col]);
+            }
+            if (a[col] < b[col]) return direction === "up" ? 1 : -1;
             if (a[col] === b[col]) return direction === "up" ? b["G"] - a["G"] : a["G"] - b["G"];
             return direction === "up" ? -1 : 1;
         });
