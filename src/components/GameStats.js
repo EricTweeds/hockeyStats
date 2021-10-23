@@ -30,21 +30,19 @@ class GameStats extends Component {
             return ret;
         }
 
-        let oppScore = parseInt(games[0]["Opponent Score"]);
-        let yourScore = parseInt(games[0]["Team Score"]);
-        let curStreak = oppScore > yourScore ? "L" : oppScore < yourScore ? "W" : "T";
+        let curStreak = games[0]["Result"];
         let streakCounter = 0;
         let streakEnded = false;
         games.forEach(game => {
             ret.GP += 1;
-            if (parseInt(game["Opponent Score"]) > parseInt(game["Team Score"])) {
+            if (game["Result"] === "L") {
                 if (curStreak === "L" && !streakEnded) {
                     streakCounter ++;
                 } else {
                     streakEnded = true;
                 }
                 ret.Loses += 1;
-            } else if (parseInt(game["Opponent Score"]) < parseInt(game["Team Score"])) {
+            } else if (game["Result"] === "W") {
                 if (curStreak === "W" && !streakEnded) {
                     streakCounter ++;
                 } else {
@@ -52,7 +50,7 @@ class GameStats extends Component {
                 }
                 ret.Wins += 1;
                 ret.Pts += 2;
-            } else if (parseInt(game["Opponent Score"]) === parseInt(game["Team Score"])) {
+            } else if (game["Result"] === "T") {
                 if (curStreak === "T" && !streakEnded) {
                     streakCounter ++;
                 } else {
@@ -73,6 +71,7 @@ class GameStats extends Component {
     render() {
         let games = this.props.db[this.props.sheetName].slice(0).reverse();
         let results = this.calculateTotals(games);
+
         return (
             <div className={styles.gameStats}>
                 <div className={styles.results}>
@@ -93,12 +92,13 @@ class GameStats extends Component {
 
                         let oppScore = parseInt(game["Opponent Score"]);
                         let yourScore = parseInt(game["Team Score"]);
-                        let result = oppScore > yourScore ? "Loss" : oppScore < yourScore ? "Win" : "Tie";
+                        let result = game["Result"] === "L" ? oppScore === yourScore ? "Loss (Forfeit)" : "Loss"
+                                    : game["Result"] === "W" ? oppScore === yourScore ? "Win (Forfeit)" : "Win" : "Tie";
 
                         return (
-                            <div className={classnames(styles.gameBox, styles[result])} key={game.Date}>
+                            <div className={styles.gameBox} key={game.Date}>
                                 <div className={styles.gameResult}>
-                                    <span className={styles[`${result}-text`]}>{result}</span>    
+                                    <span className={styles[`${result.split(" ")[0]}-text`]}>{result}</span>
                                 </div>
                                 <div className={styles.team}>
                                     <span className={styles.teamName}>{game.Opponent}</span>
