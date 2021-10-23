@@ -11,6 +11,15 @@
     margin-right: 1rem;
     margin-bottom: 1rem;
     font-size: 2em;
+    width: 33%;
+    text-align: center;
+}
+
+.headerSeason {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .games {

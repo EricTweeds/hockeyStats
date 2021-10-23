@@ -26,6 +26,10 @@ class GameStats extends Component {
             Strk: ""
         };
 
+        if (!games.length) {
+            return ret;
+        }
+
         let oppScore = parseInt(games[0]["Opponent Score"]);
         let yourScore = parseInt(games[0]["Team Score"]);
         let curStreak = oppScore > yourScore ? "L" : oppScore < yourScore ? "W" : "T";
@@ -67,14 +71,14 @@ class GameStats extends Component {
     }
 
     render() {
-        let games = this.props.db.Games.slice(0).reverse();
+        let games = this.props.db[this.props.sheetName].slice(0).reverse();
         let results = this.calculateTotals(games);
         return (
             <div className={styles.gameStats}>
                 <div className={styles.results}>
                     {Object.keys(results).map(x => {
                         return (
-                            <div className={styles.resultBox}>
+                            <div className={styles.resultBox} key={x}>
                                 <span className={styles.resultName}>{x}</span>
                                 <span className={styles.resultValue}>{results[x]}</span>
                             </div>
@@ -86,11 +90,13 @@ class GameStats extends Component {
                         if (i > 9 && !this.state.showMore) {
                             return;
                         }
+
                         let oppScore = parseInt(game["Opponent Score"]);
                         let yourScore = parseInt(game["Team Score"]);
                         let result = oppScore > yourScore ? "Loss" : oppScore < yourScore ? "Win" : "Tie";
+
                         return (
-                            <div className={classnames(styles.gameBox, styles[result])}>
+                            <div className={classnames(styles.gameBox, styles[result])} key={game.Date}>
                                 <div className={styles.gameResult}>
                                     <span className={styles[`${result}-text`]}>{result}</span>    
                                 </div>
@@ -107,10 +113,10 @@ class GameStats extends Component {
                         );
                     })}
                 </div>
-                {games.length > 9 ? <div className={styles.showMoreButton} onClick={() => this.setState({showMore: !this.state.showMore})}>{this.state.showMore ? "Show Less" : "Show More"}</div> : null}
+                {games.length > 10 ? <div className={styles.showMoreButton} onClick={() => this.setState({showMore: !this.state.showMore})}>{this.state.showMore ? "Show Less" : "Show More"}</div> : null}
             </div>
         );
     }
 }
 
-export default withGoogleSheets('Games')(GameStats);
+export default withGoogleSheets('*')(GameStats);

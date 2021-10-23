@@ -20,8 +20,12 @@ class Overview extends Component {
     }
 
     componentDidMount() {
-        if (this.props.db.Players && this.props.db.Players.length) {
-            let players = this.props.db.Players.slice(0).sort((a, b) => {
+        if (this.props.db[this.props.sheetName] && this.props.db[this.props.sheetName].length) {
+            let players = this.props.db[this.props.sheetName].slice(0).sort((a, b) => {
+                a["Pts"] = parseInt(a["Pts"]);
+                b["Pts"] = parseInt(b["Pts"]);
+                a["G"] = parseInt(a["G"]);
+                b["G"] = parseInt(b["G"]);
                 if (a["Pts"] < b ["Pts"]) return 1;
                 if (a["Pts"] === b ["Pts"]) return b["G"] - a["G"];
                 return -1;
@@ -31,11 +35,11 @@ class Overview extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.db !== this.props.db) {
+        if (prevProps.db !== this.props.db || prevProps.sheetName !== this.props.sheetName) {
             if (!this.state.selected) {
-                this.setState({selected: this.props.db.Players[0], players: this.props.db.Players.slice(0)});
+                this.setState({selected: this.props.db[this.props.sheetName][0], players: this.props.db[this.props.sheetName].slice(0)});
             } else {
-                this.setState({players: this.props.db.Players.slice(0)});
+                this.setState({players: this.props.db[this.props.sheetName].slice(0)});
             }
         }
     }
@@ -46,7 +50,7 @@ class Overview extends Component {
 
     handleSort(col, direction) {
         if (col === this.state.sort.col && direction === this.state.sort.direction) {
-            this.setState({sort: { direction: "up", col: "Pts" }, players: this.props.db.Players.slice(0), selected: this.props.db.Players[0]});
+            this.setState({sort: { direction: "up", col: "Pts" }, players: this.props.db[this.props.sheetName].slice(0), selected: this.props.db[this.props.sheetName][0]});
             return;
         }
         let players = this.state.players.sort((a, b) => {
@@ -108,6 +112,13 @@ class Overview extends Component {
                                                     </td>
                                                 );
                                             }
+                                            if (sort.col === col) {
+                                                return (
+                                                    <td className={styles.column} key={`player-${player.Player}-${col}`}>
+                                                        <b>{value}</b>
+                                                    </td>
+                                                );
+                                            }
                                             return (
                                                 <td className={styles.column} key={`player-${player.Player}-${col}`}>
                                                     {value}
@@ -130,4 +141,4 @@ class Overview extends Component {
     }
 }
 
-export default withGoogleSheets('Players')(Overview);
+export default withGoogleSheets('*')(Overview);
