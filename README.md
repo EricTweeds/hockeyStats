@@ -9,3 +9,9 @@ Website for tracking stats for beer league
 
 `npm install`
 `npm run start`
+
+# Deploying
+1. npm run build
+2. firebase logout
+3. firebase login
+4. firebase deploy
