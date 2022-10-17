@@ -19,7 +19,9 @@
     "main": "app.js",
     "scripts": {
         "start": "webpack-dev-server --open --hot --mode development",
-        "build": "webpack --mode production"
+        "build": "webpack --mode production",
+        "deploy": "firebase deploy",
+        "login": "firebase login"
     },
     "devDependencies": {
         "@babel/core": "^7.10.2",
