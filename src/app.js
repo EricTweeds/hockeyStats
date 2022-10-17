@@ -15,7 +15,7 @@ export default class App extends Component {
         this.handleSelection = this.handleSelection.bind(this);
 
         this.state = {
-            season: "2"
+            season: "3"
         }
     }
 
